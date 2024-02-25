@@ -1,17 +1,18 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 export const AddCategory = ({ onNewCategory }) => {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
 
-  const onSubmit = (event) => {
+  const onSubmit = event => {
     event.preventDefault();
 
     if (inputValue.trim().length <= 1) return;
 
     onNewCategory(inputValue.trim());
 
-    setInputValue("");
+    setInputValue('');
   };
 
   const onInputChange = ({ target }) => {
@@ -20,8 +21,17 @@ export const AddCategory = ({ onNewCategory }) => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <input type="text" placeholder="Buscar gifs" value={inputValue} onChange={onInputChange} />
+    <form aria-label="form" onSubmit={onSubmit}>
+      <input
+        type="text"
+        placeholder="Buscar gifs"
+        value={inputValue}
+        onChange={onInputChange}
+      />
     </form>
   );
+};
+
+AddCategory.propTypes = {
+  onNewCategory: PropTypes.func.isRequired,
 };

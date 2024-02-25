@@ -1,15 +1,15 @@
-import { useState } from "react";
-import { AddCategory, GifGrid } from "./components";
+import { useState } from 'react';
+import { AddCategory, GifGrid } from './components';
 
 // const KEY = "AVrncvcscO2kPRUOg7r0fkpkdrUMAI7z";
 
 export const GifExpertApp = () => {
-  const [categories, setCategories] = useState(["Jujutsu Kaisen"]);
+  const [categories, setCategories] = useState(['Jujutsu Kaisen']);
 
-  const onAddCategory = (newCategory) => {
+  const onAddCategory = newCategory => {
     if (categories.includes(newCategory)) return;
-    setCategories((categories) => [newCategory, ...categories]);
-    // console.log(newCategory);
+
+    setCategories(categories => [newCategory, ...categories]);
   };
 
   return (
@@ -18,7 +18,7 @@ export const GifExpertApp = () => {
 
       <AddCategory onNewCategory={onAddCategory} />
 
-      {categories.map((category) => (
+      {categories.map(category => (
         <GifGrid key={category} category={category} />
       ))}
     </>
